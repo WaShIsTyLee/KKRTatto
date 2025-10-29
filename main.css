@@ -22,13 +22,16 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    transition: background-color 0.3s ease; /* Aseguramos la transición del color */
+    transition: background-color 0.3s ease;
+    /* Aseguramos la transición del color */
 }
 
 /* AJUSTE CLAVE: Estilos para la barra cuando el usuario ha bajado */
 .topbar.scrolled-topbar {
-    background-color: rgba(17, 17, 17, 0.3); /* FONDO DIFUMINADO (más transparente) */
-    backdrop-filter: blur(8px); /* Efecto borroso */
+    background-color: rgba(17, 17, 17, 0.3);
+    /* FONDO DIFUMINADO (más transparente) */
+    backdrop-filter: blur(8px);
+    /* Efecto borroso */
 }
 
 /* Logo elegante */
@@ -92,7 +95,8 @@ body {
 /* --- Estilos de la Card y Perfil --- */
 .Juan {
     display: flex;
-    justify-content: center; /* Alineación horizontal centrada para mejor layout */
+    justify-content: center;
+    /* Alineación horizontal centrada para mejor layout */
     align-items: center;
     gap: 40px;
     padding: 60px 20px;
@@ -108,7 +112,7 @@ body {
     transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
-.Juan > img:first-of-type:hover {
+.Juan>img:first-of-type:hover {
     transform: translateY(-20px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
 }
@@ -119,7 +123,8 @@ body {
     border-radius: 15px;
     color: white;
     width: 400px;
-    max-width: 100%; /* Ajuste para responsividad */
+    max-width: 100%;
+    /* Ajuste para responsividad */
     height: auto;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
@@ -153,13 +158,16 @@ body {
     font-size: 15px;
     margin-bottom: 15px;
 }
+
 /* Estilo del logo de destino */
 #intro-logo {
     margin-top: 20px;
     text-align: center;
 }
+
 .logo-card-img-container {
-    width: 100px; /* Tamaño más pequeño para el logo de destino */
+    width: 100px;
+    /* Tamaño más pequeño para el logo de destino */
     height: 100px;
     border-radius: 50%;
     overflow: hidden;
@@ -173,6 +181,7 @@ body {
     object-fit: cover;
     display: block;
 }
+
 /* --- Fin Estilos de la Card y Perfil --- */
 
 
@@ -180,7 +189,8 @@ body {
 .div2 {
     padding: 40px 20px;
     margin: 20px;
-    background: none; /* Dejamos que el fondo del body haga el trabajo */
+    background: none;
+    /* Dejamos que el fondo del body haga el trabajo */
     color: white;
     text-align: center;
 }
@@ -195,8 +205,10 @@ body {
 
 .horarios {
     max-width: 1000px;
-    margin: 0 auto; /* Centra la tabla */
-    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    margin: 0 auto;
+    /* Centra la tabla */
+    overflow-x: auto;
+    /* Permite scroll horizontal en pantallas pequeñas */
 }
 
 .horario-horizontal {
@@ -209,7 +221,8 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-    min-width: 700px; /* Asegura que la tabla no sea demasiado estrecha */
+    min-width: 700px;
+    /* Asegura que la tabla no sea demasiado estrecha */
 }
 
 .horario-horizontal th,
@@ -217,7 +230,8 @@ body {
     padding: 15px 10px;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    white-space: nowrap;
+    /* Evita que el texto se rompa en varias líneas */
 }
 
 .horario-horizontal th {
@@ -241,6 +255,7 @@ body {
 .horario-horizontal tr:hover {
     background: rgba(255, 255, 255, 0.1);
 }
+
 /* --- Fin Estilos de Horarios (div2) --- */
 
 
@@ -263,7 +278,8 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     background: #222;
-    height: 300px; /* Altura fija para todas las tarjetas */
+    height: 300px;
+    /* Altura fija para todas las tarjetas */
 }
 
 .album-card:hover {
@@ -293,7 +309,8 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 10px; /* Sombra y borde ya están en .album-card */
+    border-radius: 10px;
+    /* Sombra y borde ya están en .album-card */
 }
 
 /* Ocultar la imagen de vista por defecto al hacer hover */
@@ -336,7 +353,8 @@ body {
 }
 
 /* Estilos para los botones de navegación (flechas en hover) */
-.prev-btn, .next-btn {
+.prev-btn,
+.next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -352,7 +370,8 @@ body {
     transition: opacity 0.2s ease;
 }
 
-.prev-btn:hover, .next-btn:hover {
+.prev-btn:hover,
+.next-btn:hover {
     opacity: 1;
 }
 
@@ -367,11 +386,13 @@ body {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+
 /* --- Fin Estilos de la Galería de Álbumes --- */
 
 
 /* Divs adicionales */
-.div4, .div5 {
+.div4,
+.div5 {
     margin: 20px 0;
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
@@ -401,8 +422,8 @@ body {
 #intro-overlay .logo-card {
     position: absolute;
     /* TAMAÑO MÁS PEQUEÑO: 200px */
-    width: 200px; 
-    height: 200px; 
+    width: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -413,7 +434,7 @@ body {
 
 /* Asegurar que el contenedor interno ocupe el 100% del círculo */
 #intro-overlay .logo-card .logo-card-img-container {
-    width: 100%; 
+    width: 100%;
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
@@ -423,7 +444,7 @@ body {
 #intro-overlay .logo-card .logo-card-img-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     display: block;
 }
 
@@ -450,21 +471,30 @@ body {
 
 /* Animación del logo (keyframes) */
 @keyframes logo-intro-animation {
+
     /* Estado inicial: Escala de impacto más pequeña (1.5) */
     0% {
-        transform: translate(0, 0) scale(1.5); 
+        transform: translate(0, 0) scale(1.5);
         opacity: 1;
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
     }
 
     /* Pulsos de latido */
-    20% { transform: translate(0, 0) scale(1.6); }
-    40% { transform: translate(0, 0) scale(1.5); }
-    60% { transform: translate(0, 0) scale(1.6); }
+    20% {
+        transform: translate(0, 0) scale(1.6);
+    }
+
+    40% {
+        transform: translate(0, 0) scale(1.5);
+    }
+
+    60% {
+        transform: translate(0, 0) scale(1.6);
+    }
 
     /* Pequeña pausa antes de moverse */
     70% {
-        transform: translate(0, 0) scale(1.5); 
+        transform: translate(0, 0) scale(1.5);
         opacity: 1;
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
     }
@@ -473,9 +503,10 @@ body {
     100% {
         /* Nueva escala final: 100px (destino) / 200px (base) = 0.5 */
         transform: translate(var(--dx), var(--dy)) scale(0.5);
-        opacity: 0; 
+        opacity: 0;
     }
 }
+
 /* --- Fin Estilos para la Animación de Introducción --- */
 
 
@@ -487,14 +518,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    display: none; /* Inicialmente oculto */
+    display: none;
+    /* Inicialmente oculto */
     justify-content: center;
     align-items: center;
     z-index: 2000;
 }
 
 .lightbox.active {
-    display: flex; /* Muestra el lightbox */
+    display: flex;
+    /* Muestra el lightbox */
 }
 
 /* Fondo oscuro y semi-transparente */
@@ -513,7 +546,8 @@ body {
     position: relative;
     z-index: 2001;
     width: 80vw;
-    max-width: 1200px; /* Aumentado para ver mejor los detalles */
+    max-width: 1200px;
+    /* Aumentado para ver mejor los detalles */
     height: 85vh;
     max-height: 800px;
     margin: auto;
@@ -536,13 +570,15 @@ body {
 .lightbox-carousel-images img {
     min-width: 100%;
     height: 100%;
-    object-fit: contain; /* Ajusta la imagen sin recortar dentro del contenedor */
+    object-fit: contain;
+    /* Ajusta la imagen sin recortar dentro del contenedor */
     display: block;
     margin: auto;
 }
 
 /* Botones de navegación del lightbox */
-.lightbox-prev-btn, .lightbox-next-btn {
+.lightbox-prev-btn,
+.lightbox-next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -559,7 +595,18 @@ body {
     border-radius: 5px;
 }
 
-.lightbox-prev-btn:hover, .lightbox-next-btn:hover {
+.piezastxt {
+    margin: auto;
+    font-family: "Slabo 27px", serif;
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.lightbox-prev-btn:hover,
+.lightbox-next-btn:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -615,6 +662,8 @@ body {
         font-size: 16px;
     }
 
+
+
     .Juan {
         flex-direction: column;
         padding: 40px 20px;
@@ -632,6 +681,7 @@ body {
     }
 
     .horario-horizontal {
-        min-width: 100%; /* La tabla ocupará todo el ancho disponible */
+        min-width: 100%;
+        /* La tabla ocupará todo el ancho disponible */
     }
-} 
+}
