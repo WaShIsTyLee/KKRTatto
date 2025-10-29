@@ -1,0 +1,162 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kkr.Tattoo</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="intro-overlay">
+        <div class="logo-card">
+            <div class="logo-card-img-container">
+                <img src="Imagenes/Logo.png" alt="Logo KKR.TATTO">
+            </div>
+        </div>
+    </div>
+
+
+    <div id="page-content" class="page-blurred">
+
+        <header class="topbar">
+            <div class="logo">KKR.TATTO </div>
+            <nav>
+                <ul class="menu-top">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#horario">Horario</a></li>
+
+                    <li><a href="#">Piezas</a></li>
+                    <li><a href="#">Socios</a></li>
+                    <li><a href="#">Contacto</a></li>
+
+                    <li class="insta">
+                        <a href="https://www.instagram.com/kkr.tattoo/" target="_blank">
+                            <i class="fa-brands fa-instagram"></i> kkr.tattoo
+                        </a>
+                    </li>
+                    <li class="tiktok">
+                        <a href="https://www.tiktok.com/@kkrtattoo" target="_blank">
+                            <i class="fa-brands fa-tiktok"></i> kkrtattoo
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div class="Juan">
+                <img src="Imagenes/Juan.jpg" alt="Kkr.Tattoo">
+
+                <div class="info-card">
+                    <h2>Juan Gutierrez</h2>
+                    <p class="rol">Artista del tatuaje</p>
+                    <p class="estilo">Especialista en <strong>Surrealismo</strong> y <strong>Realismo</strong>.</p>
+                    <p class="bio">Con más de 8 años de experiencia, fusiona técnica y creatividad para crear piezas
+                        únicas.
+                    </p>
+                    <strong>Estudio de tatuajes en Fernan Nuñez</strong>
+                    <p>Calle: Juan Carlos I 53 (LOCAL) Fernán Núñez, Córdoba</p>
+
+                    <div id="intro-logo" class="logo-card">
+                        <div class="logo-card-img-container">
+                            <img class="imagendiv" src="Imagenes/Logo.png" alt="Logo KKR.TATTO">
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div id="horario" class="div2">
+                <p class="horarioapertura">Horarios Apertura del Estudio</p>
+
+                <div class="horarios">
+                    <table class="horario-horizontal">
+                        <thead>
+                            <tr>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miércoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                                <th>Sábado</th>
+                                <th>Domingo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:00 - 14:00<br>16:00 - 19:00</td>
+                                <td class="cerrado">Cerrado</td>
+                                <td class="cerrado">Cerrado</td>
+                                <td class="cerrado">Cerrado</td>
+                                <td>09:00 - 13:00<br>16:00 - 18:00</td>
+                                <td class="cerrado">Cerrado</td>
+                                <td class="cerrado">Cerrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="div3">3</div>
+            <div class="div4">4</div>
+            <div class="div5">5</div>
+        </main>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const introLogoAnimated = document.querySelector('#intro-overlay .logo-card');
+            const introLogoDestination = document.getElementById('intro-logo');
+            const introOverlay = document.getElementById('intro-overlay');
+            const pageContent = document.getElementById('page-content');
+
+            // 1. Esperar a que el navegador termine de calcular las posiciones
+            window.requestAnimationFrame(() => {
+                // Posición del logo de destino (el que está en el info-card)
+                const targetRect = introLogoDestination.getBoundingClientRect();
+
+                // Posición del logo animado (el que está centrado en el overlay)
+                const animatedRect = introLogoAnimated.getBoundingClientRect();
+
+                // 2. Calcular las diferencias de traslación (destino - origen)
+                // Queremos que el logo animado (origen) se mueva a la posición del logo de destino.
+                const dx = targetRect.left - animatedRect.left;
+                const dy = targetRect.top - animatedRect.top;
+
+                // 3. Aplicar las variables CSS y la animación
+                // Establecemos las distancias de movimiento como variables CSS
+                introLogoAnimated.style.setProperty('--dx', `${dx}px`);
+                introLogoAnimated.style.setProperty('--dy', `${dy}px`);
+
+                // Aplicamos la animación (duración total 2.5s)
+                introLogoAnimated.style.animation = 'logo-intro-animation 2.5s forwards';
+
+                // 4. Iniciar la transición de la página y el logo de destino
+                setTimeout(() => {
+                    // Quitar la clase que desenfoca el contenido
+                    pageContent.classList.remove('page-blurred');
+
+                    // Revelar el logo de destino
+                    introLogoDestination.style.visibility = 'visible';
+                    introLogoDestination.style.opacity = '1';
+
+                    // Ocultar el overlay y el logo animado
+                    introOverlay.style.opacity = '0';
+                }, 2000); // 2 segundos, justo antes de que termine la animación del logo.
+
+                // 5. Eliminar el overlay para que no interfiera con los clics
+                setTimeout(() => {
+                    introOverlay.style.display = 'none';
+                }, 2500); // 2.5 segundos, después de que todo haya terminado.
+            });
+        });
+    </script>
+</body>
+
+</html>
