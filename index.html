@@ -103,60 +103,192 @@
                 </div>
             </div>
 
-            <div class="div3">3</div>
+           <div class="div3">
+    <div class="album-card" id="Album1">
+        <div class="carousel-container">
+            <div class="card-default-view">
+                <img src="Imagenes/Album1/Imagen1Album1.jpg" alt="Imagen principal del Album 1">
+            </div>
+            <div class="album-carousel">
+                <div class="carousel-images">
+                    <img src="Imagenes/Album1/Imagen1Album1.jpg" alt="Imagen 1 del Album 1">
+                    <img src="Imagenes/Album1/Imagen2Album2.jpg" alt="Imagen 2 del Album 1">
+                    </div>
+                <button class="prev-btn">❮</button>
+                <button class="next-btn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="album-card" id="Album2">
+        <div class="carousel-container">
+            <div class="card-default-view">
+                <img src="Imagenes/Album2/Imagen1Album2.jpg" alt="Imagen principal del Album 2">
+            </div>
+            <div class="album-carousel">
+                <div class="carousel-images">
+                    <img src="Imagenes/Album2/Imagen1Album2.jpg" alt="Imagen 1 del Album 2">
+                    <img src="Imagenes/Album2/Imagen2Album2.jpg" alt="Imagen 2 del Album 2">
+                    </div>
+                <button class="prev-btn">❮</button>
+                <button class="next-btn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="album-card" id="Album3">
+        <div class="carousel-container">
+            <div class="card-default-view">
+                <img src="Imagenes/Album3/Imagen1Album3.jpg" alt="Imagen principal del Album 3">
+            </div>
+            <div class="album-carousel">
+                <div class="carousel-images">
+                    <img src="Imagenes/Album3/Imagen1Album3.jpg" alt="Imagen 1 del Album 3">
+                    <img src="Imagenes/Album3/Imagen2Album3.jpg" alt="Imagen 2 del Album 3">
+                    </div>
+                <button class="prev-btn">❮</button>
+                <button class="next-btn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="album-card" id="Album4">
+        <div class="carousel-container">
+            <div class="card-default-view">
+                <img src="Imagenes/Album4/Imagen1Album4.jpg" alt="Imagen principal del Album 4">
+            </div>
+            <div class="album-carousel">
+                <div class="carousel-images">
+                    <img src="Imagenes/Album4/Imagen1Album4.jpg" alt="Imagen 1 del Album 4">
+                    <img src="Imagenes/Album4/Imagen2Album4.jpg" alt="Imagen 2 del Album 4">
+                    </div>
+                <button class="prev-btn">❮</button>
+                <button class="next-btn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="album-card" id="Album5">
+        <div class="carousel-container">
+            <div class="card-default-view">
+                <img src="Imagenes/Album5/Imagen1Album5.jpg" alt="Imagen principal del Album 5">
+            </div>
+            <div class="album-carousel">
+                <div class="carousel-images">
+                    <img src="Imagenes/Album5/Imagen1Album5.jpg" alt="Imagen 1 del Album 5">
+                    <img src="Imagenes/Album5/Imagen2Album5.jpg" alt="Imagen 2 del Album 5">
+                    </div>
+                <button class="prev-btn">❮</button>
+                <button class="next-btn">❯</button>
+            </div>
+        </div>
+    </div>
+</div>
             <div class="div4">4</div>
             <div class="div5">5</div>
         </main>
 
     </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const introLogoAnimated = document.querySelector('#intro-overlay .logo-card');
-            const introLogoDestination = document.getElementById('intro-logo');
-            const introOverlay = document.getElementById('intro-overlay');
-            const pageContent = document.getElementById('page-content');
+    function initializeCarousel(albumId) {
+        const albumCard = document.getElementById(albumId);
+        if (!albumCard) return;
 
-            // 1. Esperar a que el navegador termine de calcular las posiciones
-            window.requestAnimationFrame(() => {
-                // Posición del logo de destino (el que está en el info-card)
-                const targetRect = introLogoDestination.getBoundingClientRect();
+        const carouselImages = albumCard.querySelector('.carousel-images');
+        // Asegúrate de que este selector sea correcto para tus imágenes
+        const images = carouselImages.querySelectorAll('img'); 
+        const prevBtn = albumCard.querySelector('.prev-btn');
+        const nextBtn = albumCard.querySelector('.next-btn');
 
-                // Posición del logo animado (el que está centrado en el overlay)
-                const animatedRect = introLogoAnimated.getBoundingClientRect();
+        let currentIndex = 0;
+        const totalImages = images.length;
 
-                // 2. Calcular las diferencias de traslación (destino - origen)
-                // Queremos que el logo animado (origen) se mueva a la posición del logo de destino.
-                const dx = targetRect.left - animatedRect.left;
-                const dy = targetRect.top - animatedRect.top;
+        // Función para actualizar la posición del carrusel
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
 
-                // 3. Aplicar las variables CSS y la animación
-                // Establecemos las distancias de movimiento como variables CSS
-                introLogoAnimated.style.setProperty('--dx', `${dx}px`);
-                introLogoAnimated.style.setProperty('--dy', `${dy}px`);
-
-                // Aplicamos la animación (duración total 2.5s)
-                introLogoAnimated.style.animation = 'logo-intro-animation 2.5s forwards';
-
-                // 4. Iniciar la transición de la página y el logo de destino
-                setTimeout(() => {
-                    // Quitar la clase que desenfoca el contenido
-                    pageContent.classList.remove('page-blurred');
-
-                    // Revelar el logo de destino
-                    introLogoDestination.style.visibility = 'visible';
-                    introLogoDestination.style.opacity = '1';
-
-                    // Ocultar el overlay y el logo animado
-                    introOverlay.style.opacity = '0';
-                }, 2000); // 2 segundos, justo antes de que termine la animación del logo.
-
-                // 5. Eliminar el overlay para que no interfiera con los clics
-                setTimeout(() => {
-                    introOverlay.style.display = 'none';
-                }, 2500); // 2.5 segundos, después de que todo haya terminado.
-            });
+        // Botón Siguiente
+        nextBtn.addEventListener('click', (e) => {
+            // Detener la propagación para evitar que el hover se active/desactive
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
         });
-    </script>
+
+        // Botón Anterior
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
+
+        // Opcional: Deslizamiento automático al hacer hover
+        let slideInterval;
+
+        albumCard.addEventListener('mouseenter', () => {
+            // Resetea al principio al entrar y detiene cualquier intervalo anterior
+            clearInterval(slideInterval); 
+            currentIndex = 0;
+            updateCarousel();
+
+            // Solo inicia el carrusel automático si hay más de una imagen
+            if (totalImages > 1) {
+                slideInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % totalImages;
+                    updateCarousel();
+                }, 2000);
+            }
+        });
+
+        albumCard.addEventListener('mouseleave', () => {
+            clearInterval(slideInterval); // Detiene el deslizamiento al salir
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- CÓDIGO DE ANIMACIÓN DE INTRO ---
+        const introLogoAnimated = document.querySelector('#intro-overlay .logo-card');
+        const introLogoDestination = document.getElementById('intro-logo');
+        const introOverlay = document.getElementById('intro-overlay');
+        const pageContent = document.getElementById('page-content');
+
+        window.requestAnimationFrame(() => {
+            const targetRect = introLogoDestination.getBoundingClientRect();
+            const animatedRect = introLogoAnimated.getBoundingClientRect();
+            const dx = targetRect.left - animatedRect.left;
+            const dy = targetRect.top - animatedRect.top;
+
+            introLogoAnimated.style.setProperty('--dx', `${dx}px`);
+            introLogoAnimated.style.setProperty('--dy', `${dy}px`);
+            introLogoAnimated.style.animation = 'logo-intro-animation 2.5s forwards';
+
+            setTimeout(() => {
+                pageContent.classList.remove('page-blurred');
+                introLogoDestination.style.visibility = 'visible';
+                introLogoDestination.style.opacity = '1';
+                introOverlay.style.opacity = '0';
+            }, 2000);
+
+            setTimeout(() => {
+                introOverlay.style.display = 'none';
+            }, 2500);
+        });
+
+        // 🚀 LÍNEA CRÍTICA: Activar el carrusel del Album1
+        initializeCarousel('Album1');
+        initializeCarousel('Album2');
+        initializeCarousel('Album3');
+        initializeCarousel('Album4');
+        initializeCarousel('Album5');
+        
+        // Si conviertes los otros álbumes (Album2, Album3, etc.) a la nueva estructura:
+        // initializeCarousel('Album2');
+        // initializeCarousel('Album3');
+    });
+</script>
 </body>
 
 </html>

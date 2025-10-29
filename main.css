@@ -49,7 +49,136 @@ body {
   font-size: 32px;
   font-weight: 700;
 }
+/* --- Estilos para la Galería de Álbumes (div3) --- */
+.div3 {
+    display: grid;
+    /* Ajusta este valor a la cantidad de columnas que desees */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+}
 
+/* Contenedor principal de la "tarjeta" de un álbum */
+.album-card {
+    position: relative; /* Clave para posicionar el carrusel por encima */
+    border-radius: 10px;
+    overflow: hidden; /* Para contener las imágenes y el carrusel */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    background: #222; /* Fondo para cuando el carrusel está activo */
+}
+
+/* Vista por defecto: La primera imagen */
+.card-default-view {
+    width: 100%;
+    height: 300px; /* Altura fija para la vista de tarjeta */
+}
+
+.card-default-view img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Contenedor del Carrusel (inicialmente invisible y fuera de flujo) */
+.album-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Empieza invisible */
+    pointer-events: none; /* Ignora eventos de ratón */
+    transition: opacity 0.3s ease;
+    display: flex;
+    overflow: hidden; /* Oculta las imágenes que no están visibles */
+}
+
+/* Efecto al pasar el ratón */
+.album-card:hover {
+    transform: translateY(-5px); /* Pequeño levantamiento */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Mostrar el Carrusel al hacer hover */
+.album-card:hover .album-carousel {
+    opacity: 1; /* Se vuelve visible */
+    pointer-events: all; /* Permite clics y navegación */
+}
+
+/* Ocultar la imagen de vista por defecto al hacer hover */
+.album-card:hover .card-default-view {
+    opacity: 0;
+}
+
+/* Contenedor interno de las imágenes del carrusel */
+.carousel-images {
+    display: flex; /* Pone las imágenes en fila */
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out; /* Animación de deslizamiento */
+}
+
+.carousel-images img {
+    /* Clave: cada imagen ocupa el 100% del ancho del carrusel */
+    min-width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos para los botones de navegación (flechas) */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    opacity: 1;
+}
+
+.prev-btn {
+    left: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.next-btn {
+    right: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+/* Limpieza de la estructura antigua para los álbumes restantes */
+.Album2, .Album3, .Album4, .Album5 {
+    /* Remueve padding y background del div3 para un mejor grid */
+    padding: 0; 
+    background: none;
+    height: 300px; /* Mantener una altura consistente con album-card */
+}
+
+.Album2 > div, .Album3 > div, .Album4 > div, .Album5 > div {
+    height: 100%;
+}
+.Album2 img, .Album3 img, .Album4 img, .Album5 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
 /* Menú superior */
 .menu-top {
   list-style: none;
