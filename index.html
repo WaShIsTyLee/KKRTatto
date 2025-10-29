@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +7,8 @@
     <title>Kkr.Tattoo</title>
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -18,8 +20,6 @@
             </div>
         </div>
     </div>
-
-
     <div id="page-content" class="page-blurred">
 
         <header class="topbar">
@@ -28,7 +28,6 @@
                 <ul class="menu-top">
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#horario">Horario</a></li>
-
                     <li><a href="#piezas">Piezas</a></li>
                     <li><a href="#">Socios</a></li>
                     <li><a href="#">Contacto</a></li>
@@ -46,8 +45,8 @@
                 </ul>
             </nav>
         </header>
-
         <main class="content">
+
             <div class="Juan">
                 <img src="Imagenes/Juan.jpg" alt="Kkr.Tattoo">
 
@@ -66,12 +65,8 @@
                             <img class="imagendiv" src="Imagenes/Logo.png" alt="Logo KKR.TATTO">
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
-
             <div id="horario" class="div2">
                 <p class="horarioapertura">Horarios Apertura del Estudio</p>
 
@@ -102,7 +97,6 @@
                     </table>
                 </div>
             </div>
-
             <div id="piezas" class="div3">
                 <div class="album-card" id="Album1">
                     <div class="carousel-container">
@@ -112,8 +106,8 @@
                         <div class="album-carousel">
                             <div class="carousel-images">
                                 <img src="Imagenes/Album1/Imagen1Album1.jpg" alt="Imagen 1 del Album 1">
-                                <img src="Imagenes/Album1/Imagen2Album2.jpg" alt="Imagen 2 del Album 1">
-                            </div>
+                                <img src="Imagenes/Album1/Imagen2Album1.jpg" alt="Imagen 2 del Album 1">
+                                </div>
                             <button class="prev-btn">❮</button>
                             <button class="next-btn">❯</button>
                         </div>
@@ -184,77 +178,77 @@
                     </div>
                 </div>
             </div>
-            <div class="div4">4</div>
-            <div class="div5">5</div>
+            <div class="div4">Otras Secciones o Información</div>
+            <div class="div5">Contacto o Footer</div>
         </main>
 
     </div>
-    <div id="lightbox" class="lightbox">
-        <div class="lightbox-backdrop"></div>
 
-        <div class="lightbox-content">
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-backdrop"></div> <div class="lightbox-content">
             <span class="lightbox-close">&times;</span>
-            <img id="lightbox-image" src="" alt="Imagen ampliada">
+            <div class="lightbox-carousel-images">
+                </div>
+            <button class="lightbox-prev-btn">❮</button>
+            <button class="lightbox-next-btn">❯</button>
         </div>
     </div>
     <script>
+        // Función para inicializar el carrusel de cada tarjeta (al hacer hover)
         function initializeCarousel(albumId) {
             const albumCard = document.getElementById(albumId);
             if (!albumCard) return;
 
-            const carouselImages = albumCard.querySelector('.carousel-images');
-            // Asegúrate de que este selector sea correcto para tus imágenes
-            const images = carouselImages.querySelectorAll('img');
+            const carouselImagesContainer = albumCard.querySelector('.carousel-images');
+            const images = carouselImagesContainer.querySelectorAll('img');
             const prevBtn = albumCard.querySelector('.prev-btn');
             const nextBtn = albumCard.querySelector('.next-btn');
 
             let currentIndex = 0;
             const totalImages = images.length;
 
-            // Función para actualizar la posición del carrusel
             function updateCarousel() {
                 const offset = -currentIndex * 100;
-                carouselImages.style.transform = `translateX(${offset}%)`;
+                carouselImagesContainer.style.transform = `translateX(${offset}%)`;
             }
 
-            // Botón Siguiente
-            nextBtn.addEventListener('click', (e) => {
-                // Detener la propagación para evitar que el hover se active/desactive
-                e.stopPropagation();
-                currentIndex = (currentIndex + 1) % totalImages;
-                updateCarousel();
-            });
-
-            // Botón Anterior
+            // Evitar que el click en las flechas inicie el Lightbox
             prevBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 currentIndex = (currentIndex - 1 + totalImages) % totalImages;
                 updateCarousel();
             });
 
-            // Opcional: Deslizamiento automático al hacer hover
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateCarousel();
+            });
+
+
             let slideInterval;
 
             albumCard.addEventListener('mouseenter', () => {
-                // Resetea al principio al entrar y detiene cualquier intervalo anterior
                 clearInterval(slideInterval);
-                currentIndex = 0;
+                currentIndex = 0; // Reset al principio al entrar
                 updateCarousel();
 
-                // Solo inicia el carrusel automático si hay más de una imagen
+                // Auto-slide solo si hay más de una imagen
                 if (totalImages > 1) {
                     slideInterval = setInterval(() => {
                         currentIndex = (currentIndex + 1) % totalImages;
                         updateCarousel();
-                    }, 2000);
+                    }, 2000); // Cambia de imagen cada 2 segundos
                 }
             });
 
             albumCard.addEventListener('mouseleave', () => {
-                clearInterval(slideInterval); // Detiene el deslizamiento al salir
+                clearInterval(slideInterval); // Detiene el auto-slide
             });
         }
 
+
+        // Inicialización y Lógica Principal
         document.addEventListener('DOMContentLoaded', () => {
             // --- CÓDIGO DE ANIMACIÓN DE INTRO ---
             const introLogoAnimated = document.querySelector('#intro-overlay .logo-card');
@@ -262,6 +256,7 @@
             const introOverlay = document.getElementById('intro-overlay');
             const pageContent = document.getElementById('page-content');
 
+            // Asegurar que el cálculo de la posición final se hace después de que el DOM está listo
             window.requestAnimationFrame(() => {
                 const targetRect = introLogoDestination.getBoundingClientRect();
                 const animatedRect = introLogoAnimated.getBoundingClientRect();
@@ -270,68 +265,139 @@
 
                 introLogoAnimated.style.setProperty('--dx', `${dx}px`);
                 introLogoAnimated.style.setProperty('--dy', `${dy}px`);
+
+                // Ejecutar la animación CSS
                 introLogoAnimated.style.animation = 'logo-intro-animation 2.5s forwards';
 
+                // Mostrar la página y desvanecer el overlay
                 setTimeout(() => {
                     pageContent.classList.remove('page-blurred');
                     introLogoDestination.style.visibility = 'visible';
-                    introLogoDestination.style.opacity = '1';
-                    introOverlay.style.opacity = '0';
-                }, 2000);
+                    introLogoDestination.style.opacity = '1'; // El logo se hace visible en el destino
+                    introOverlay.style.opacity = '0'; // Desvanece la capa de intro
+                }, 2000); // Coincide con el tiempo de la animación
 
+                // Eliminar el overlay del DOM
                 setTimeout(() => {
                     introOverlay.style.display = 'none';
                 }, 2500);
             });
 
-            // 🚀 LÍNEA CRÍTICA: Activar el carrusel del Album1
-            // ... DENTRO de document.addEventListener('DOMContentLoaded', () => { ...
 
-            // 🚀 LÍNEAS CRÍTICAS: Activar los carruseles de TODOS los álbumes
+            // 🚀 Inicializar todos los carruseles de las tarjetas
             initializeCarousel('Album1');
             initializeCarousel('Album2');
             initializeCarousel('Album3');
             initializeCarousel('Album4');
             initializeCarousel('Album5');
 
-            // --- LÓGICA DEL LIGHTBOX ---
+
+            // --- LÓGICA DEL LIGHTBOX CON CARRUSEL INTEGRADO ---
             const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-            const closeBtn = document.querySelector('.lightbox-close');
-            const allImages = document.querySelectorAll('.album-card img');
+            const lightboxCarouselImagesContainer = lightbox.querySelector('.lightbox-carousel-images');
+            const lightboxPrevBtn = lightbox.querySelector('.lightbox-prev-btn');
+            const lightboxNextBtn = lightbox.querySelector('.lightbox-next-btn');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const backdrop = lightbox.querySelector('.lightbox-backdrop');
 
-            // 1. Abrir el Lightbox
-            allImages.forEach(img => {
-                img.addEventListener('click', (e) => {
-                    // Detenemos la propagación para evitar conflictos con el carrusel
-                    e.stopPropagation();
+            let currentLightboxAlbumImages = [];
+            let currentLightboxIndex = 0;
+            let currentLightboxTotalImages = 0;
 
-                    const src = e.target.getAttribute('src');
+            function updateLightboxCarousel() {
+                const offset = -currentLightboxIndex * 100;
+                lightboxCarouselImagesContainer.style.transform = `translateX(${offset}%)`;
+            }
 
-                    // Establecer la imagen y mostrar el lightbox
-                    lightboxImage.setAttribute('src', src);
+            // Manejador para el botón Siguiente del lightbox
+            lightboxNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxTotalImages;
+                updateLightboxCarousel();
+            });
+
+            // Manejador para el botón Anterior del lightbox
+            lightboxPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxTotalImages) % currentLightboxTotalImages;
+                updateLightboxCarousel();
+            });
+
+            // Capturar clics en cualquier imagen de la galería de piezas
+            const div3 = document.querySelector('.div3');
+
+            div3.addEventListener('click', (e) => {
+                // Solo actuar si el clic fue en una imagen dentro de un album-card
+                if (e.target.tagName === 'IMG' && e.target.closest('.album-card')) {
+                    const clickedImage = e.target;
+                    const albumCard = clickedImage.closest('.album-card');
+
+                    // 1. Recopilar TODAS las imágenes del carrusel del álbum clicado
+                    const albumImages = Array.from(albumCard.querySelectorAll('.carousel-images img')).map(img => img.src);
+                    currentLightboxAlbumImages = albumImages;
+                    currentLightboxTotalImages = albumImages.length;
+
+                    // 2. Determinar el índice de la imagen clicada (puede ser la default view o una del carrusel)
+                    let clickedImageSrc = clickedImage.src;
+                    
+                    // Si clicaste la imagen de la vista por defecto, su src ya está correcto.
+                    // Si clicaste una del carrusel, también.
+                    currentLightboxIndex = albumImages.indexOf(clickedImageSrc);
+                    // Si no la encuentra (p. ej. por la URL completa), forzamos a 0
+                    if (currentLightboxIndex === -1) {
+                         currentLightboxIndex = 0; 
+                    }
+
+
+                    // 3. Rellenar el carrusel del lightbox dinámicamente
+                    lightboxCarouselImagesContainer.innerHTML = ''; // Limpiar contenido anterior
+                    albumImages.forEach(src => {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = src;
+                        imgElement.alt = "Tatuaje de Kkr.Tattoo";
+                        lightboxCarouselImagesContainer.appendChild(imgElement);
+                    });
+
+                    // 4. Mostrar el lightbox y posicionar el carrusel
+                    updateLightboxCarousel(); // Posicionar en la imagen correcta
                     lightbox.classList.add('active');
-                });
-            });
+                    document.body.style.overflow = 'hidden'; // Evita el scroll de fondo
 
-            // 2. Cerrar el Lightbox con el botón X
-            closeBtn.addEventListener('click', () => {
-                lightbox.classList.remove('active');
-            });
-
-            // 3. Cerrar el Lightbox haciendo clic en el fondo borroso
-            const backdrop = document.querySelector('.lightbox-backdrop');
-            backdrop.addEventListener('click', () => {
-                lightbox.classList.remove('active');
-            });
-
-            // 4. Cerrar el Lightbox con la tecla ESC
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    lightbox.classList.remove('active');
+                    // Asegúrate de que los botones de navegación se muestren/oculten si solo hay 1 imagen
+                    if (currentLightboxTotalImages <= 1) {
+                        lightboxPrevBtn.style.display = 'none';
+                        lightboxNextBtn.style.display = 'none';
+                    } else {
+                        lightboxPrevBtn.style.display = 'block';
+                        lightboxNextBtn.style.display = 'block';
+                    }
                 }
             });
 
+            // 5. Cerrar el Lightbox (Botón X, Backdrop, Tecla ESC)
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = ''; // Restaura el scroll de fondo
+            };
+
+            closeBtn.addEventListener('click', closeLightbox);
+            backdrop.addEventListener('click', closeLightbox);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+                // Navegación con flechas del teclado dentro del Lightbox
+                if (lightbox.classList.contains('active') && currentLightboxTotalImages > 1) {
+                    if (e.key === 'ArrowRight') {
+                        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxTotalImages;
+                        updateLightboxCarousel();
+                    } else if (e.key === 'ArrowLeft') {
+                        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxTotalImages) % currentLightboxTotalImages;
+                        updateLightboxCarousel();
+                    }
+                }
+            });
         });
     </script>
 </body>

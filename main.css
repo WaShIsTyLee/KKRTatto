@@ -1,77 +1,279 @@
 body {
-  margin: 0;
-  background: linear-gradient(135deg, #000000 0%, #434343 100%);
+    margin: 0;
+    background: linear-gradient(135deg, #000000 0%, #434343 100%);
 }
 
 /* Barra superior */
 .topbar {
-  width: 100%;
-  height: 60px;
-  background-color: #111;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
-.descripcion {
-  margin: auto;
-}
-.logo-card {
-  margin-top: 20px; /* espacio desde el texto superior */
-  text-align: center; /* centra el logo horizontalmente */
-}
-
-.logo-card-img-container {
-  width: 200px; /* ancho del logo */
-  height: 200px; /* alto igual al ancho para círculo */
-  border-radius: 50%; /* círculo perfecto */
-  overflow: hidden; /* recorta la imagen que sobresalga */
-  display: inline-block; /* permite centrarlo */
-  border: 2px solid rgba(255, 255, 255, 0.3); /* borde opcional */
-}
-
-.logo-card-img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* mantiene proporción y recorta si es necesario */
-  display: block;
+    width: 100%;
+    height: 60px;
+    background-color: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 /* Logo elegante */
 .topbar .logo {
-  font-family: "Slabo 27px", serif;
-  color: white;
-  font-size: 32px;
-  font-weight: 700;
+    font-family: "Slabo 27px", serif;
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
 }
+
+/* Menú superior */
+.menu-top {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Enlaces del menú con efecto de subrayado animado */
+.menu-top li a {
+    font-family: "Slabo 27px", serif;
+    font-size: 18px;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    color: white;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Subrayado animado */
+.menu-top li a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: #a6a6a6;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+}
+
+/* Animación al pasar el cursor */
+.menu-top li a:hover::before {
+    transform: scaleY(1);
+}
+
+.menu-top li a:hover {
+    transform: translateY(-3px);
+}
+
+/* Contenido principal */
+.content {
+    padding: 80px 20px 20px 20px;
+}
+
+/* --- Estilos de la Card y Perfil --- */
+.Juan {
+    display: flex;
+    justify-content: center; /* Alineación horizontal centrada para mejor layout */
+    align-items: center;
+    gap: 40px;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+}
+
+.Juan img {
+    width: 600px;
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    object-fit: cover;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.Juan > img:first-of-type:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px 40px 60px 40px;
+    border-radius: 15px;
+    color: white;
+    width: 400px;
+    max-width: 100%; /* Ajuste para responsividad */
+    height: auto;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.info-card h2 {
+    font-family: "Slabo 27px", serif;
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.info-card .rol {
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.info-card .estilo {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info-card .bio {
+    line-height: 1.4;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+/* Estilo del logo de destino */
+#intro-logo {
+    margin-top: 20px;
+    text-align: center;
+}
+.logo-card-img-container {
+    width: 100px; /* Tamaño más pequeño para el logo de destino */
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.logo-card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+/* --- Fin Estilos de la Card y Perfil --- */
+
+
+/* --- Estilos de Horarios (div2) --- */
+.div2 {
+    padding: 40px 20px;
+    margin: 20px;
+    background: none; /* Dejamos que el fondo del body haga el trabajo */
+    color: white;
+    text-align: center;
+}
+
+.horarioapertura {
+    font-family: "Slabo 27px", serif;
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.horarios {
+    max-width: 1000px;
+    margin: 0 auto; /* Centra la tabla */
+    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+}
+
+.horario-horizontal {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    min-width: 700px; /* Asegura que la tabla no sea demasiado estrecha */
+}
+
+.horario-horizontal th,
+.horario-horizontal td {
+    padding: 15px 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+}
+
+.horario-horizontal th {
+    background: rgba(255, 255, 255, 0.1);
+    font-family: "Slabo 27px", serif;
+}
+
+.horario-horizontal td:last-child {
+    border-right: none;
+}
+
+.horario-horizontal tr:last-child td {
+    border-bottom: none;
+}
+
+.horario-horizontal td.cerrado {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.horario-horizontal tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+/* --- Fin Estilos de Horarios (div2) --- */
+
+
 /* --- Estilos para la Galería de Álbumes (div3) --- */
 .div3 {
     display: grid;
-    /* Ajusta este valor a la cantidad de columnas que desees */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 20px;
+    padding: 40px 20px;
+    margin: 20px;
+    /* Usa un máximo de 5 columnas, con un mínimo de 280px por columna */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    background: none;
 }
 
-/* Contenedor principal de la "tarjeta" de un álbum */
 .album-card {
-    position: relative; /* Clave para posicionar el carrusel por encima */
+    position: relative;
     border-radius: 10px;
-    overflow: hidden; /* Para contener las imágenes y el carrusel */
+    overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    background: #222; /* Fondo para cuando el carrusel está activo */
+    background: #222;
+    height: 300px; /* Altura fija para todas las tarjetas */
 }
 
-/* Vista por defecto: La primera imagen */
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Contenedor que mantiene la altura para el carrusel y la vista por defecto */
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Vista por defecto (Imagen principal) */
 .card-default-view {
     width: 100%;
-    height: 300px; /* Altura fija para la vista de tarjeta */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
 }
 
 .card-default-view img {
@@ -79,33 +281,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: opacity 0.3s ease;
-}
-
-/* Contenedor del Carrusel (inicialmente invisible y fuera de flujo) */
-.album-carousel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Empieza invisible */
-    pointer-events: none; /* Ignora eventos de ratón */
-    transition: opacity 0.3s ease;
-    display: flex;
-    overflow: hidden; /* Oculta las imágenes que no están visibles */
-}
-
-/* Efecto al pasar el ratón */
-.album-card:hover {
-    transform: translateY(-5px); /* Pequeño levantamiento */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-}
-
-/* Mostrar el Carrusel al hacer hover */
-.album-card:hover .album-carousel {
-    opacity: 1; /* Se vuelve visible */
-    pointer-events: all; /* Permite clics y navegación */
+    border-radius: 10px; /* Sombra y borde ya están en .album-card */
 }
 
 /* Ocultar la imagen de vista por defecto al hacer hover */
@@ -113,22 +289,41 @@ body {
     opacity: 0;
 }
 
-/* Contenedor interno de las imágenes del carrusel */
-.carousel-images {
-    display: flex; /* Pone las imágenes en fila */
+/* Contenedor del Carrusel (inicialmente invisible) */
+.album-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.3s ease-in-out; /* Animación de deslizamiento */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Mostrar el Carrusel al hacer hover */
+.album-card:hover .album-carousel {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Contenedor interno de las imágenes del carrusel */
+.carousel-images {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
 }
 
 .carousel-images img {
-    /* Clave: cada imagen ocupa el 100% del ancho del carrusel */
-    min-width: 100%; 
+    min-width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Estilos para los botones de navegación (flechas) */
+/* Estilos para los botones de navegación (flechas en hover) */
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
@@ -160,83 +355,216 @@ body {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+/* --- Fin Estilos de la Galería de Álbumes --- */
 
-/* Limpieza de la estructura antigua para los álbumes restantes */
-.Album2, .Album3, .Album4, .Album5 {
-    /* Remueve padding y background del div3 para un mejor grid */
-    padding: 0; 
-    background: none;
-    height: 300px; /* Mantener una altura consistente con album-card */
+
+/* Divs adicionales */
+.div4, .div5 {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-align: center;
 }
 
-.Album2 > div, .Album3 > div, .Album4 > div, .Album5 > div {
-    height: 100%;
-}
-.Album2 img, .Album3 img, .Album4 img, .Album5 img {
+
+/* --- Estilos para la Animación de Introducción --- */
+
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
 }
+
+/* El logo dentro del overlay (estado inicial) */
+#intro-overlay .logo-card {
+    position: absolute;
+    /* AJUSTE CLAVE 1: Aumentado el tamaño del círculo de carga */
+    width: 350px; 
+    height: 350px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* AJUSTE CLAVE 2A: Asegurar que el contenedor interno ocupe el 100% del círculo */
+#intro-overlay .logo-card .logo-card-img-container {
+    width: 100%; 
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* AJUSTE CLAVE 2B: Asegurar que la imagen dentro del overlay rellene completamente el contenedor */
+#intro-overlay .logo-card .logo-card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ¡Esto hace que la imagen rellene el círculo! */
+    display: block;
+}
+
+
+/* Ocultar el logo en su posición original hasta que termine la intro */
+.info-card #intro-logo {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Contenido de la web (barra y contenido principal) */
+.topbar,
+.content {
+    transition: filter 1s ease, opacity 1s ease;
+}
+
+/* Estado inicial de la web: desenfocada y menos opaca */
+.page-blurred .topbar,
+.page-blurred .content {
+    filter: blur(8px);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Animación del logo (keyframes) */
+@keyframes logo-intro-animation {
+    /* Estado inicial: Centrado, MÁS GRANDE y con latido inicial */
+    0% {
+        transform: translate(0, 0) scale(2.0); /* AJUSTE: Escala grande */
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Pulsos de latido */
+    20% { transform: translate(0, 0) scale(2.1); }
+    40% { transform: translate(0, 0) scale(2.0); }
+    60% { transform: translate(0, 0) scale(2.1); }
+
+    /* Pequeña pausa antes de moverse */
+    70% {
+        transform: translate(0, 0) scale(2.0); /* AJUSTE: Escala grande */
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Vuelve a su posición final (el movimiento de salida) */
+    100% {
+        /* AJUSTE CLAVE 3: Escala final para 350px -> 100px (100/350 ≈ 0.285) */
+        transform: translate(var(--dx), var(--dy)) scale(0.285);
+        opacity: 0; 
+    }
+}
+/* --- Fin Estilos para la Animación de Introducción --- */
+
+
 /* --- Estilos para el Lightbox/Modal --- */
 
-/* Contenedor principal: Oculto por defecto */
 .lightbox {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2000; /* Asegura que esté por encima de todo (z-index alto) */
     display: none; /* Inicialmente oculto */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* Estado Activo: Se muestra el lightbox */
-.lightbox.active {
-    display: flex; /* Centra el contenido */
     justify-content: center;
     align-items: center;
-    opacity: 1;
+    z-index: 2000;
 }
 
-/* Fondo con efecto borroso (Backdrop) */
+.lightbox.active {
+    display: flex; /* Muestra el lightbox */
+}
+
+/* Fondo oscuro y semi-transparente */
 .lightbox-backdrop {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo negro semitransparente */
-    backdrop-filter: blur(10px); /* El efecto de desenfoque deseado */
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
 }
 
-/* Contenido de la imagen (centrado) */
+/* Contenido de la imagen (centrado y contendrá el carrusel) */
 .lightbox-content {
     position: relative;
-    z-index: 2001; /* Por encima del backdrop */
-    max-width: 90%;
-    max-height: 90%;
+    z-index: 2001;
+    width: 80vw;
+    max-width: 1200px; /* Aumentado para ver mejor los detalles */
+    height: 85vh;
+    max-height: 800px;
     margin: auto;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Contenedor de las imágenes del carrusel dentro del lightbox */
+.lightbox-carousel-images {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.lightbox-carousel-images img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la imagen sin recortar dentro del contenedor */
+    display: block;
+    margin: auto;
+}
+
+/* Botones de navegación del lightbox */
+.lightbox-prev-btn, .lightbox-next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 15px 12px;
+    cursor: pointer;
+    z-index: 2002;
+    font-size: 28px;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
     border-radius: 5px;
 }
 
-#lightbox-image {
-    display: block;
-    max-width: 100%;
-    max-height: 100vh; /* Se ajusta a la altura de la ventana */
-    object-fit: contain; /* Asegura que la imagen completa sea visible */
-    border-radius: 5px;
+.lightbox-prev-btn:hover, .lightbox-next-btn:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-prev-btn {
+    left: 10px;
+}
+
+.lightbox-next-btn {
+    right: 10px;
 }
 
 /* Botón de cerrar (X) */
 .lightbox-close {
     position: absolute;
-    top: -30px; /* Posición fuera de la imagen (o ajústalo a tu gusto) */
-    right: 0;
+    top: 10px;
+    right: 10px;
     color: white;
     font-size: 40px;
     font-weight: bold;
@@ -244,325 +572,54 @@ body {
     line-height: 1;
     text-shadow: 0 0 5px black;
     transition: color 0.2s;
+    z-index: 2003;
 }
 
 .lightbox-close:hover {
     color: #ff6b6b;
 }
-/* Menú superior */
-.menu-top {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
 
-/* Enlaces del menú con efecto de subrayado animado */
-.menu-top li a {
-  font-family: "Slabo 27px", serif;
-  font-size: 18px;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.3s ease;
-  color: white;
-  padding-bottom: 5px;
-  display: inline-block;
-}
+/* --- Fin Estilos para el Lightbox/Modal --- */
 
-/* Subrayado animado */
-.menu-top li a::before {
-  content: "";
-  position: absolute;
-  z-index: -1; /* detrás del texto */
-  bottom: 0; /* alineado al fondo del enlace */
-  left: 0;
-  right: 0;
-  height: 5px;
-  background-color: #a6a6a6;
-  transform: scaleY(0); /* inicialmente colapsado */
-  transform-origin: bottom;
-  transition: transform 0.3s ease;
-}
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 900px) {
+    .topbar {
+        height: auto;
+        flex-direction: column;
+        padding: 10px 20px;
+    }
 
-/* Animación al pasar el cursor */
-.menu-top li a:hover::before {
-  transform: scaleY(1); /* subrayado se expande */
-}
+    .topbar .logo {
+        margin-bottom: 10px;
+    }
 
-.menu-top li a:hover {
-  transform: translateY(-3px); /* levanta ligeramente el enlace */
-}
+    .menu-top {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px;
+    }
 
-/* Contenido principal */
-.content {
-  padding: 80px 20px 20px 20px; /* espacio para que no quede debajo de la barra */
-}
+    .menu-top li a {
+        font-size: 16px;
+    }
 
-/* Imagen centrada */
-.Juan {
-  display: flex;
-  justify-content: flex-start; /* alinea a la izquierda */
-  align-items: center;
-  padding: 20px; /* espacio dentro de la card */
-}
+    .Juan {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 25px;
+    }
 
-.Juan {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 40px;
-  padding: 60px 20px;
-  flex-wrap: wrap; /* Para que se adapte en pantallas pequeñas */
-}
+    .Juan img {
+        width: 100%;
+        max-width: 500px;
+    }
 
-.Juan img {
-  width: 600px;
-  max-width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  object-fit: cover;
-  transition: transform 0.6s ease, box-shadow 0.6s ease; /* transición más lenta */
-}
-.imagendiv{
-    transform: translateY(0);
+    .info-card {
+        width: 100%;
+        padding: 30px;
+    }
 
-}
-.Juan > img:first-of-type {
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
-}
-
-.Juan > img:first-of-type:hover {
-  transform: translateY(-20px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-}
-
-/* Tabla de horarios */
-.horario-horizontal {
-  border-radius: 50px;
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  font-family: "Slabo 27px", serif;
-  color: white;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-}
-
-.horario-horizontal th,
-.horario-horizontal td {
-  padding: 12px 10px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.horario-horizontal th:last-child,
-.horario-horizontal td:last-child {
-  border-right: none;
-}
-
-.horario-horizontal td.cerrado {
-  color: #ff6b6b;
-  font-weight: bold;
-}
-
-.horario-horizontal tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.horario-horizontal tr:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(0); /* No levantar al pasar el cursor */
-}
-
-/* --- Estilo de la card --- */
-.info-card {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 40px 40px 60px 40px; /* top, right, bottom, left */
-  margin: auto;
-  border-radius: 15px;
-  color: white;
-  width: 400px;
-  height: auto; /* para que se ajuste al contenido */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(6px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-.info-card h2 {
-  font-family: "Slabo 27px", serif;
-  font-size: 26px;
-  margin-bottom: 5px;
-}
-
-.info-card .rol {
-  font-style: italic;
-  color: #ccc;
-  margin-bottom: 10px;
-}
-
-.info-card .estilo {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.info-card .bio {
-  line-height: 1.4;
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-/* Iconos sociales */
-.info-card .social a {
-  color: white;
-  font-size: 22px;
-  margin-right: 15px;
-  transition: color 0.3s;
-}
-
-.info-card .social a:hover i.fa-instagram {
-  color: #e1306c;
-}
-
-.info-card .social a:hover i.fa-tiktok {
-  color: #69c9d0;
-}
-.div2 {
-  border-radius: 15px;
-}
-.horarioapertura {
-  font-family: "Slabo 27px", serif;
-  color: white;
-
-  font-size: 32px;
-  font-weight: 700;
-}
-/* Divs adicionales */
-.div2,
-.div3,
-.div4,
-.div5 {
-  margin: 20px 0;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  text-align: center;
-}
-/* --- Estilos para la Animación de Introducción --- */
-
-/* Contenedor de la animación (ocupa toda la pantalla, encima de todo) */
-#intro-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999; /* Asegura que esté por encima de todo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* CAMBIO CLAVE AQUÍ: Fondo semitransparente o transparente para ver el blur de abajo */
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
-  opacity: 1;
-  transition: opacity 0.5s ease-out; /* Transición para ocultar el overlay al final */
-}
-
-/* El logo dentro del overlay (estado inicial) */
-#intro-overlay .logo-card {
-  position: absolute; /* Para centrar y animar libremente */
-  transform: scale(1.5); /* Aumenta el tamaño inicial del logo */
-  opacity: 1;
-  margin: 0;
-  padding: 0;
-  /* Tamaño del contenedor del logo en la intro */
-  width: 250px; /* Ancho del card que contendrá el logo */
-  height: 250px; /* Alto del card que contendrá el logo */
-  display: flex; /* Para centrar la imagen dentro del card */
-  justify-content: center;
-  align-items: center;
-  /* Opcional: añade una sombra o borde al logo grande de la intro */
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-  border-radius: 50%; /* Hace el contenedor del logo redondo */
-  overflow: hidden; /* Recorta la imagen para que sea redonda */
-}
-
-#intro-overlay .logo-card .logo-card-img-container {
-  /* Aquí la imagen ya no define el tamaño externo, solo se ajusta a su padre */
-  width: 100%;
-  height: 100%;
-  border-radius: 50%; /* Asegura que la imagen también sea redonda */
-  overflow: hidden; /* Asegura el recorte */
-}
-
-#intro-overlay .logo-card .logo-card-img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Mantiene la proporción y cubre el espacio */
-  display: block;
-}
-
-/* Ocultar el logo en su posición original hasta que termine la intro */
-.info-card #intro-logo {
-  visibility: hidden;
-  opacity: 0;
-}
-
-/* Contenido de la web (barra y contenido principal) */
-.topbar,
-.content {
-  transition: filter 1s ease, opacity 1s ease; /* Transiciones suaves para el desenfoque y la opacidad */
-}
-
-/* Estado inicial de la web: desenfocada y menos opaca */
-.page-blurred .topbar,
-.page-blurred .content {
-  filter: blur(8px); /* Aumentamos el desenfoque para que sea más notorio */
-  opacity: 0.4; /* Reducimos la opacidad un poco más */
-  pointer-events: none; /* Deshabilita clics mientras está desenfocado */
-}
-
-/* Animación del logo (keyframes) */
-/* Animación del logo (keyframes) */
-@keyframes logo-intro-animation {
-  /* Estado inicial: Centrado, grande y con latido inicial */
-  0% {
-    transform: translate(0, 0) scale(1.5);
-    opacity: 1;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-  }
-
-  /* Inicio del latido */
-  20% {
-    transform: translate(0, 0) scale(1.55); /* Ligeramente más grande */
-  }
-
-  /* Fin del primer latido / Inicio del segundo */
-  40% {
-    transform: translate(0, 0) scale(1.5);
-  }
-
-  /* Pico del segundo latido */
-  60% {
-    transform: translate(0, 0) scale(1.55); /* Ligeramente más grande */
-  }
-
-  /* Pequeña pausa antes de moverse */
-  70% {
-    transform: translate(0, 0) scale(1.5);
-    opacity: 1;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-  }
-
-  /* Vuelve a su posición final (el movimiento de salida) */
-  100% {
-    transform: translate(var(--dx), var(--dy)) scale(1); /* Mover a la posición final */
-    opacity: 0; /* Desaparece para revelar el logo en la card original */
-    box-shadow: none; /* Elimina la sombra al desaparecer */
-  }
+    .horario-horizontal {
+        min-width: 100%; /* La tabla ocupará todo el ancho disponible */
+    }
 }
