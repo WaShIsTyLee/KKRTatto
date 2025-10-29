@@ -107,7 +107,7 @@
                             <div class="carousel-images">
                                 <img src="Imagenes/Album1/Imagen1Album1.jpg" alt="Imagen 1 del Album 1">
                                 <img src="Imagenes/Album1/Imagen2Album1.jpg" alt="Imagen 2 del Album 1">
-                                </div>
+                            </div>
                             <button class="prev-btn">❮</button>
                             <button class="next-btn">❯</button>
                         </div>
@@ -185,10 +185,11 @@
     </div>
 
     <div id="lightbox" class="lightbox">
-        <div class="lightbox-backdrop"></div> <div class="lightbox-content">
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-content">
             <span class="lightbox-close">&times;</span>
             <div class="lightbox-carousel-images">
-                </div>
+            </div>
             <button class="lightbox-prev-btn">❮</button>
             <button class="lightbox-next-btn">❯</button>
         </div>
@@ -247,6 +248,27 @@
             });
         }
 
+        // --- CÓDIGO NUEVO PARA EL SCROLL MÍNIMO Y LA BARRA DE NAVEGACIÓN ---
+        function setupScrollEffect() {
+            const topbar = document.querySelector('.topbar');
+            // Umbral de scroll mínimo (10 píxeles). ¡Esto lo activa casi inmediatamente!
+            const scrollThreshold = 10; 
+
+            function checkScroll() {
+                // Comprueba si el scroll vertical es mayor que el umbral
+                if (window.scrollY > scrollThreshold) {
+                    topbar.classList.add('scrolled-topbar');
+                } else {
+                    topbar.classList.remove('scrolled-topbar');
+                }
+            }
+
+            // Asigna la función al evento de scroll y la ejecuta al cargar 
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Ejecuta una vez al inicio por si la página ya carga desplazada
+        }
+        // --- FIN CÓDIGO NUEVO ---
+
 
         // Inicialización y Lógica Principal
         document.addEventListener('DOMContentLoaded', () => {
@@ -290,6 +312,9 @@
             initializeCarousel('Album3');
             initializeCarousel('Album4');
             initializeCarousel('Album5');
+
+            // 🌟 INICIALIZAR EL EFECTO DE SCROLL MÍNIMO
+            setupScrollEffect();
 
 
             // --- LÓGICA DEL LIGHTBOX CON CARRUSEL INTEGRADO ---
@@ -339,13 +364,13 @@
 
                     // 2. Determinar el índice de la imagen clicada (puede ser la default view o una del carrusel)
                     let clickedImageSrc = clickedImage.src;
-                    
+
                     // Si clicaste la imagen de la vista por defecto, su src ya está correcto.
                     // Si clicaste una del carrusel, también.
                     currentLightboxIndex = albumImages.indexOf(clickedImageSrc);
                     // Si no la encuentra (p. ej. por la URL completa), forzamos a 0
                     if (currentLightboxIndex === -1) {
-                         currentLightboxIndex = 0; 
+                        currentLightboxIndex = 0;
                     }
 
 
